@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Textracer app</string>
+    <string name="sign">sign</string>
+    <string name="labelUser">labelUser</string>
+    <string name="labelPass">labelPass</string>
+    <string name="home">home</string>
+    <string name="register">register</string>
+    <string name="account">account</string>
+    <string name="login">login</string>
+</resources>
