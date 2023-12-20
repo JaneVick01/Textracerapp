@@ -1,6 +1,7 @@
 package com.example.textracerapp.Screens
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -8,6 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.Phone
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -21,6 +23,7 @@ import androidx.compose.ui.graphics.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
+import androidx.navigation.NavHostController
 import com.example.textracerapp.data.ListItem
 import com.example.textracerapp.data.listItems
 
@@ -29,6 +32,8 @@ import com.example.textracerapp.data.listItems
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun TasksPage(
+    navController: NavHostController,
+    context: Context,
 ) {
     Scaffold(
         topBar = {
@@ -63,8 +68,7 @@ fun MyList(listItems: List<ListItem>) {
 fun ListItem(item: ListItem) {
     Card(
         modifier = Modifier.padding(10.dp),
-        shape = RoundedCornerShape(15.dp),
-        elevation = 8.dp
+        shape = RoundedCornerShape(15.dp)
     ) {
         Row(
             modifier = Modifier

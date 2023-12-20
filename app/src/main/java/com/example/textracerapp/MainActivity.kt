@@ -81,6 +81,11 @@ class MainActivity : ComponentActivity() {
                         unselectedIcon = Icons.Outlined.AccountCircle
                     ),
                     BottomNavigationItem(
+                        title = stringResource(id = R.string.task),
+                        selectedIcon = Icons.Filled.AccountCircle,
+                        unselectedIcon = Icons.Outlined.AccountCircle
+                    ),
+                    BottomNavigationItem(
                         title = stringResource(id = R.string.register),
                         selectedIcon = Icons.Filled.AccountCircle,
                         unselectedIcon = Icons.Outlined.AccountCircle
@@ -105,7 +110,8 @@ class MainActivity : ComponentActivity() {
                                             when (index) {
                                                 0 -> navController.navigate(Screens.Home.route)
                                                 1 -> navController.navigate(Screens.Login.route)
-                                                2 -> navController.navigate(Screens.Register.route)
+                                                2 -> navController.navigate(Screens.Task.route)
+                                                3 -> navController.navigate(Screens.Register.route)
                                             }
                                         },
                                         label = {
