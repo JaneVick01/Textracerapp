@@ -55,6 +55,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.*
+import com.example.textracerapp.Screens.TasksPage
 
 class MainActivity : ComponentActivity() {
 
@@ -104,7 +105,7 @@ class MainActivity : ComponentActivity() {
                             ) {
                                 items.forEachIndexed { index, item ->
                                     NavigationBarItem(
-                                        selected = selectedItemIndex == index || (selectedItemIndex == 1 && (index == 2 || index == 0)),
+                                        selected = selectedItemIndex == index || (selectedItemIndex == 2 && (index == 3 || index == 4)),
                                         onClick = {
                                             selectedItemIndex = index
                                             when (index) {
@@ -146,23 +147,23 @@ class MainActivity : ComponentActivity() {
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
 
-                            // Declare variables to hold email and password values
-                            var email by remember { mutableStateOf("") }
-                            var password by remember { mutableStateOf("") }
-
-                            StyledEmailField(email) { updatedEmail ->
-                                email = updatedEmail
-                            }
-
-                            // StyledPasswordField with password value
-                            StyledPasswordField(password) { updatedPassword ->
-                                password = updatedPassword
-                            }
-
-                            LoginButton {
-                                // Pass email and password to the login function
-                                LoginBtnClicked(email, password)
-                            }
+//                            // Declare variables to hold email and password values
+//                            var email by remember { mutableStateOf("") }
+//                            var password by remember { mutableStateOf("") }
+//
+//                            StyledEmailField(email) { updatedEmail ->
+//                                email = updatedEmail
+//                            }
+//
+//                            // StyledPasswordField with password value
+//                            StyledPasswordField(password) { updatedPassword ->
+//                                password = updatedPassword
+//                            }
+//
+//                            LoginButton {
+//                                // Pass email and password to the login function
+//                                LoginBtnClicked(email, password)
+//                            }
 
                             NavHost(
                                 navController = navController,
@@ -175,6 +176,11 @@ class MainActivity : ComponentActivity() {
                                 composable(Screens.Login.route) {
                                     LoginPage(navController, applicationContext)
                                     selectedItemIndex = 1
+                                }
+
+                                composable(Screens.Task.route) {
+                                    TasksPage(navController, applicationContext)
+                                    selectedItemIndex = 2
                                 }
 
 //                                 composable(Screens.Register.route) {
