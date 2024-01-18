@@ -55,6 +55,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.*
+import com.example.textracerapp.Screens.OrderEvidencePage
 import com.example.textracerapp.Screens.TasksPage
 
 class MainActivity : ComponentActivity() {
@@ -180,6 +181,11 @@ class MainActivity : ComponentActivity() {
 
                                 composable(Screens.Task.route) {
                                     TasksPage(navController, applicationContext)
+                                    selectedItemIndex = 2
+                                }
+
+                                composable(Screens.OrderEvidence.route) {
+                                    OrderEvidencePage(navController, applicationContext)
                                     selectedItemIndex = 2
                                 }
 

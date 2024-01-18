@@ -8,4 +8,5 @@
     <string name="account">account</string>
     <string name="login">login</string>
     <string name="task">task</string>
+    <string name="uploadpicture">upload picture</string>
 </resources>

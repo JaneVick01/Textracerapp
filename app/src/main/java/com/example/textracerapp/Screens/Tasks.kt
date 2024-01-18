@@ -30,8 +30,10 @@ import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.textracerapp.data.ListItem
 import com.example.textracerapp.data.listItems
+import com.example.textracerapp.navigation.Screens
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,15 +57,15 @@ fun TasksPage(
             )
         }
     ) {
-
-//        MyList(listItems = listItems)
-        MyUI()
+        MyUI(navController = navController, context = context)
     }
-
 }
 
 @Composable
-fun MyUI() {
+fun MyUI(
+    navController: NavHostController,
+    context: Context,
+) {
     val optionsList = prepareOptionsList()
 
     LazyColumn(
@@ -71,7 +73,7 @@ fun MyUI() {
         contentPadding = PaddingValues(all = 22.dp) // padding for LazyColumn layout
     ) {
         items(optionsList) { item ->
-            ItemLayout(optionsList = item)
+            ItemLayout(navController = navController, optionsList = item)
         }
     }
 }
@@ -80,7 +82,8 @@ fun MyUI() {
 @Composable
 private fun ItemLayout(
     optionsList: OptionsList,
-    context: Context = LocalContext.current.applicationContext
+    context: Context = LocalContext.current.applicationContext,
+    navController: NavHostController
 ) {
     Card(
         shape = RoundedCornerShape(size = 12.dp)
@@ -89,9 +92,7 @@ private fun ItemLayout(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    Toast
-                        .makeText(context, optionsList.option, Toast.LENGTH_SHORT)
-                        .show()
+                    navController.navigate("order_evidence")
                 }
                 .padding(vertical = 10.dp, horizontal = 12.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -130,48 +131,4 @@ private fun prepareOptionsList(): MutableList<OptionsList> {
 
 data class OptionsList(val icon: ImageVector, val option: String)
 
-//
-//@Composable
-//fun MyList(listItems: List<ListItem>) {
-//    LazyColumn {
-//        items(listItems) { item ->
-//            ListItem(item)
-//        }
-//    }
-//}
-//
-//@Composable
-//fun ListItem(item: ListItem) {
-//    Card(
-//        modifier = Modifier.padding(10.dp),
-//        shape = RoundedCornerShape(15.dp)
-//    ) {
-//        Row(
-//            modifier = Modifier
-//                .padding(16.dp)
-//                .fillMaxWidth(),
-//            verticalAlignment = Alignment.CenterVertically
-//        ) {
-//            Column(
-//                modifier = Modifier
-//                    .padding(horizontal = 20.dp)
-//                    .weight(1f)
-//            ) {
-//                Text(
-//                    text = item.title,
-//                    style = TextStyle(
-//                        color = Color(0xFF2b2b2b),
-//                        fontWeight = FontWeight.Bold,
-//                        fontSize = 16.sp
-//                    )
-//                )
-//                Text(text = item.subtitle, style = MaterialTheme.typography.bodyMedium)
-//            }
-//            IconButton(
-//                onClick = {}
-//            ) {
-//                Icon(imageVector = Icons.Outlined.Phone, contentDescription = "")
-//            }
-//        }
-//    }
-//}
+
