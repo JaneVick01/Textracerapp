@@ -57,6 +57,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.*
 import com.example.textracerapp.Screens.OrderEvidencePage
 import com.example.textracerapp.Screens.TasksPage
+import com.example.textracerapp.Screens.UploadEvidencePage
 
 class MainActivity : ComponentActivity() {
 
@@ -73,25 +74,15 @@ class MainActivity : ComponentActivity() {
 
                 val items = listOf(
                     BottomNavigationItem(
-                        title = stringResource(id = R.string.home),
+                        title = stringResource(id = R.string.task),
                         selectedIcon = Icons.Filled.Home,
                         unselectedIcon = Icons.Outlined.Home
                     ),
                     BottomNavigationItem(
-                        title = stringResource(id = R.string.login),
+                        title = stringResource(id = R.string.account),
                         selectedIcon = Icons.Filled.AccountCircle,
                         unselectedIcon = Icons.Outlined.AccountCircle
-                    ),
-                    BottomNavigationItem(
-                        title = stringResource(id = R.string.task),
-                        selectedIcon = Icons.Filled.AccountCircle,
-                        unselectedIcon = Icons.Outlined.AccountCircle
-                    ),
-                    BottomNavigationItem(
-                        title = stringResource(id = R.string.register),
-                        selectedIcon = Icons.Filled.AccountCircle,
-                        unselectedIcon = Icons.Outlined.AccountCircle
-                    ),
+                    )
                 )
 
                 // A surface container using the 'background' color from the theme
@@ -110,10 +101,8 @@ class MainActivity : ComponentActivity() {
                                         onClick = {
                                             selectedItemIndex = index
                                             when (index) {
-                                                0 -> navController.navigate(Screens.Home.route)
+                                                0 -> navController.navigate(Screens.Task.route)
                                                 1 -> navController.navigate(Screens.Login.route)
-                                                2 -> navController.navigate(Screens.Task.route)
-                                                3 -> navController.navigate(Screens.Register.route)
                                             }
                                         },
                                         label = {
@@ -168,31 +157,34 @@ class MainActivity : ComponentActivity() {
 
                             NavHost(
                                 navController = navController,
-                                startDestination = Screens.Home.route,
+                                startDestination = Screens.Task.route,
                             ) {
-                                composable(Screens.Home.route) {
+//                                composable(Screens.Home.route) {
+//                                    selectedItemIndex = 0
+//                                }
+
+                                composable(Screens.Task.route) {
+                                    TasksPage(navController, applicationContext)
                                     selectedItemIndex = 0
                                 }
+
 
                                 composable(Screens.Login.route) {
                                     LoginPage(navController, applicationContext)
                                     selectedItemIndex = 1
                                 }
 
-                                composable(Screens.Task.route) {
-                                    TasksPage(navController, applicationContext)
-                                    selectedItemIndex = 2
-                                }
 
                                 composable(Screens.OrderEvidence.route) {
                                     OrderEvidencePage(navController, applicationContext)
-                                    selectedItemIndex = 2
+                                    selectedItemIndex = 0
                                 }
 
-//                                 composable(Screens.Register.route) {
-//                                     RegisterPage(navController, applicationContext)
-//                                     selectedItemIndex = 2
-//                                 }
+                                composable(Screens.UploadEvidence.route) {
+                                    UploadEvidencePage(navController, applicationContext)
+                                    selectedItemIndex = 0
+                                }
+
                             }
                         }
                     }

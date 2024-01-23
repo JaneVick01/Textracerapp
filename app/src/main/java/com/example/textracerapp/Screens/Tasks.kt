@@ -72,6 +72,9 @@ fun MyUI(
         verticalArrangement = Arrangement.spacedBy(space = 24.dp), // gap between items
         contentPadding = PaddingValues(all = 22.dp) // padding for LazyColumn layout
     ) {
+        item {
+            Spacer(modifier = Modifier.height(24.dp)) // Add a spacer at the top
+        }
         items(optionsList) { item ->
             ItemLayout(navController = navController, optionsList = item)
         }
@@ -116,13 +119,7 @@ private fun ItemLayout(
 private fun prepareOptionsList(): MutableList<OptionsList> {
     val optionsList = mutableListOf<OptionsList>()
 
-    optionsList.add(OptionsList(icon = Icons.Outlined.Favorite, option = "Upload order evidence"))
-    optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
-    optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
-    optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
-    optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
-    optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
-    optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
+//    optionsList.add(OptionsList(icon = Icons.Outlined.Favorite, option = "Upload order evidence"))
     optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
     optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
     optionsList.add(OptionsList(icon = Icons.Outlined.Notifications, option = "Upload order evidence"))
