@@ -55,6 +55,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.*
+import com.example.textracerapp.Screens.GalleryPage
 import com.example.textracerapp.Screens.OrderEvidencePage
 import com.example.textracerapp.Screens.TasksPage
 import com.example.textracerapp.Screens.UploadEvidencePage
@@ -182,6 +183,11 @@ class MainActivity : ComponentActivity() {
 
                                 composable(Screens.UploadEvidence.route) {
                                     UploadEvidencePage(navController, applicationContext)
+                                    selectedItemIndex = 0
+                                }
+
+                                composable(Screens.Gallery.route) {
+                                    GalleryPage(navController, applicationContext)
                                     selectedItemIndex = 0
                                 }
 
