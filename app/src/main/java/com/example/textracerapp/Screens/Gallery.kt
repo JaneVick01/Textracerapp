@@ -67,7 +67,6 @@ fun GalleryPage(
 
         RepeatImages(navController = navController)
 
-
         Spacer(modifier = Modifier.height(50.dp))
 
         }
